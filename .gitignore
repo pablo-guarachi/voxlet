@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+*.wav
+*.log
+data/
+build/
+dist/
+*.spec
+release/
+config.py.gpu-backup

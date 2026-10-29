@@ -1,0 +1,249 @@
+/* Global stylesheet. @tokens are replaced by theme.py (colours, spacing,
+   radii, font sizes): never put raw hex values here. */
+
+QMainWindow, QWidget#Page, QStackedWidget, QScrollArea, QScrollArea > QWidget > QWidget {
+    background: @bg;
+}
+
+/* ---------------------------------------------------------- sidebar */
+QFrame#Sidebar {
+    background: @surface;
+    border-right: 1px solid @border;
+}
+QLabel#Brand {
+    font-family: @font_display;
+    font-size: @fs_title;
+    font-weight: 600;
+}
+QLabel#BrandTagline {
+    color: @text_muted;
+    font-size: @fs_caption;
+}
+QListWidget#Nav {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+QListWidget#Nav::item {
+    min-height: 36px;
+    padding: 0px @sp_md;
+    margin: 2px 0px;
+    border-radius: @r_sm;
+    color: @text_muted;
+}
+QListWidget#Nav::item:hover {
+    background: @surface_hover;
+    color: @text;
+}
+QListWidget#Nav::item:selected {
+    background: @accent_tint;
+    color: @text;
+}
+QLabel#SidebarFooter {
+    color: @text_faint;
+    font-size: @fs_caption;
+}
+
+/* ---------------------------------------------------------- typography */
+QLabel[role="pageTitle"] {
+    font-family: @font_display;
+    font-size: @fs_display;
+    font-weight: 600;
+}
+QLabel[role="sectionTitle"] {
+    font-size: @fs_label;
+    font-weight: 600;
+    color: @text_muted;
+}
+QLabel[role="muted"] {
+    color: @text_muted;
+}
+QLabel[role="caption"] {
+    color: @text_faint;
+    font-size: @fs_caption;
+}
+QLabel[role="empty"] {
+    color: @text_muted;
+    padding: @sp_xl;
+}
+
+/* ---------------------------------------------------------- cards */
+QFrame#Card {
+    background: @surface;
+    border: 1px solid @border;
+    border-radius: @r_md;
+}
+
+QFrame#StatusCard {
+    background: @surface;
+    border: 1px solid @border;
+    border-radius: @r_lg;
+}
+QFrame#StatusCard[state="idle"]       { border-color: @border_strong; }
+QFrame#StatusCard[state="loading"]    { background: @state_loading_tint;    border-color: @state_loading_edge; }
+QFrame#StatusCard[state="listening"]  { background: @state_listening_tint;  border-color: @state_listening_edge; }
+QFrame#StatusCard[state="recording"]  { background: @state_recording_tint;  border-color: @state_recording_edge; }
+QFrame#StatusCard[state="processing"] { background: @state_processing_tint; border-color: @state_processing_edge; }
+
+QLabel#StatusTitle {
+    font-family: @font_display;
+    font-size: @fs_display;
+    font-weight: 600;
+    background: transparent;
+}
+QLabel#StatusHint {
+    color: @text_muted;
+    background: transparent;
+}
+
+QLabel#KeyCap {
+    font-family: @font_mono;
+    font-size: @fs_label;
+    font-weight: 600;
+    background: @surface_alt;
+    border: 1px solid @border_strong;
+    border-bottom-width: 3px;
+    border-radius: @r_sm;
+    padding: 4px 10px;
+}
+QLabel#KeyPlus {
+    color: @text_faint;
+    background: transparent;
+}
+
+QLabel#Transcript {
+    font-size: @fs_title;
+    background: transparent;
+}
+
+/* ---------------------------------------------------------- buttons */
+QPushButton {
+    background: @surface_alt;
+    border: 1px solid @border;
+    border-radius: @r_sm;
+    padding: 7px @sp_md;
+    min-height: 22px;
+}
+QPushButton:hover   { background: @surface_hover; border-color: @border_strong; }
+QPushButton:pressed { background: @border; }
+QPushButton:disabled { color: @text_faint; background: @surface; }
+QPushButton:focus { border-color: @accent; }
+
+QPushButton[variant="primary"] {
+    background: @accent;
+    border: 1px solid @accent;
+    color: @accent_text;
+    font-weight: 600;
+    padding: 9px @sp_lg;
+}
+QPushButton[variant="primary"]:hover { background: @accent_hover; border-color: @accent_hover; }
+QPushButton[variant="primary"]:disabled { background: @surface_alt; border-color: @border; color: @text_faint; }
+
+QPushButton[variant="danger"] {
+    background: transparent;
+    border: 1px solid @state_recording_edge;
+    color: @danger;
+    font-weight: 600;
+    padding: 9px @sp_lg;
+}
+QPushButton[variant="danger"]:hover { background: @state_recording_tint; }
+
+QPushButton[variant="ghost"] {
+    background: transparent;
+    border: 1px solid transparent;
+    color: @text_muted;
+}
+QPushButton[variant="ghost"]:hover { background: @surface_hover; color: @text; }
+
+/* ---------------------------------------------------------- inputs */
+QLineEdit, QComboBox, QPlainTextEdit, QListWidget#List {
+    background: @surface;
+    border: 1px solid @border;
+    border-radius: @r_sm;
+    selection-background-color: @accent;
+    selection-color: @accent_text;
+}
+QLineEdit, QComboBox {
+    padding: 6px @sp_sm;
+    min-height: 22px;
+}
+QLineEdit:focus, QComboBox:focus, QPlainTextEdit:focus, QListWidget#List:focus {
+    border-color: @accent;
+}
+QComboBox::drop-down { border: none; width: 24px; }
+QComboBox QAbstractItemView {
+    background: @surface;
+    border: 1px solid @border;
+    selection-background-color: @accent_tint;
+    selection-color: @text;
+}
+QPlainTextEdit { padding: @sp_sm; }
+QPlainTextEdit#LogView {
+    font-family: @font_mono;
+    font-size: @fs_caption;
+    color: @text_muted;
+    background: @surface_alt;
+}
+
+QListWidget#List::item {
+    border-bottom: 1px solid @border;
+    padding: @sp_sm;
+}
+QListWidget#List::item:selected {
+    background: @accent_tint;
+    color: @text;
+}
+QListWidget#List::item:hover:!selected {
+    background: @surface_hover;
+}
+
+QCheckBox { spacing: @sp_sm; background: transparent; }
+QCheckBox::indicator {
+    width: 16px; height: 16px;
+    border: 1px solid @border_strong;
+    border-radius: 4px;
+    background: @surface;
+}
+QCheckBox::indicator:checked {
+    background: @accent;
+    border-color: @accent;
+}
+QCheckBox::indicator:focus { border-color: @accent; }
+
+/* ---------------------------------------------------------- misc */
+QSplitter::handle { background: transparent; height: @sp_sm; }
+QStatusBar {
+    background: @surface;
+    border-top: 1px solid @border;
+    color: @text_muted;
+    font-size: @fs_caption;
+}
+QStatusBar QLabel { color: @text_muted; font-size: @fs_caption; }
+QToolTip {
+    background: @surface_alt;
+    color: @text;
+    border: 1px solid @border_strong;
+    padding: 4px 8px;
+}
+QMenu {
+    background: @surface;
+    border: 1px solid @border_strong;
+    border-radius: @r_sm;
+    padding: @sp_xs;
+}
+QMenu::item {
+    padding: 7px 28px 7px 12px;
+    border-radius: 4px;
+}
+QMenu::item:selected { background: @accent_tint; }
+QMenu::item:disabled { color: @text_faint; }
+QMenu::separator { height: 1px; background: @border; margin: 4px 6px; }
+QMenu::icon { padding-left: 8px; }
+
+QScrollBar:vertical { background: transparent; width: 10px; margin: 2px; }
+QScrollBar::handle:vertical { background: @border_strong; border-radius: 4px; min-height: 24px; }
+QScrollBar::add-line, QScrollBar::sub-line { height: 0px; width: 0px; }
+QScrollBar::add-page, QScrollBar::sub-page { background: transparent; }
+QScrollBar:horizontal { height: 0px; }
+
+QMessageBox, QInputDialog { background: @bg; }
